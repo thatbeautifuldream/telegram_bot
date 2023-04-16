@@ -1,4 +1,10 @@
+// nodemon was used to run the bot so that any changes made to the code are reflected immediately without the need to restart the bot
+// the script start is configured in package.json to run the bot using nodemon
+// to start the bot smimply run the command (npm run start)
+
+// the telegraf library is used to create the bot
 const { Telegraf } = require("telegraf");
+// to use the environment variables we need to install the dotenv package
 require("dotenv").config();
 
 /*
@@ -35,6 +41,17 @@ bot.command("contact", (ctx) =>
 
 // on emoji replies witha  heart emoji
 bot.on("sticker", (ctx) => ctx.reply("❤️"));
+
+// to quit the bot
+bot.command("quit", (ctx) => {
+  ctx.reply("Bye");
+  ctx.leaveChat();
+});
+
+// configure a reply to messages
+bot.on("text", (ctx) => {
+  ctx.reply("Unfortunatly I don't understand humans, I am just a bot");
+});
 
 // at last we need to launch the bot
 bot.launch();
