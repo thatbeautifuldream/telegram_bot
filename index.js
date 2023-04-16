@@ -33,5 +33,8 @@ bot.command("contact", (ctx) =>
   ctx.reply("You can contact the bot creator at contact@milind.live")
 );
 
+// on emoji replies witha  heart emoji
+bot.on("sticker", (ctx) => ctx.reply("❤️"));
+
 // at last we need to launch the bot
 bot.launch();
