@@ -43,9 +43,27 @@ bot.command("contact", (ctx) =>
 bot.on("sticker", (ctx) => ctx.reply("❤️"));
 
 // to quit the bot
+// try {
+//   bot.command("quit", (ctx) => {
+//     ctx.reply("Bye");
+//     ctx.leaveChat();
+//   });
+// } catch (error) {
+//   console.log(error);
+//   ctx.reply("Something went wrong");
+// }
+
+// TelegramError: 400: Bad Request: chat member status can't be changed in private chats
+
+// on quit find out if its a group chat or a private chat
+// if its a group chat then leave the chat but its a private chat then reply with a message
 bot.command("quit", (ctx) => {
-  ctx.reply("Bye");
-  ctx.leaveChat();
+    if (ctx.chat.type === "group") {
+      ctx.reply("Bye");
+      ctx.leaveChat();
+    } else {
+      ctx.reply("I can't leave a private chat");
+    }
 });
 
 // configure a reply to messages
