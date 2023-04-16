@@ -2,6 +2,9 @@
 // the script start is configured in package.json to run the bot using nodemon
 // to start the bot smimply run the command (npm run start)
 
+// simmilarly pm2 can be used to run the bot in the background and restart it if it crashes
+// pm2 is a process manager for node.js applications
+
 // the telegraf library is used to create the bot
 const { Telegraf } = require("telegraf");
 // to use the environment variables we need to install the dotenv package
